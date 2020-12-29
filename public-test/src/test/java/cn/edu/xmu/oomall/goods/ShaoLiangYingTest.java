@@ -611,7 +611,7 @@ public class ShaoLiangYingTest {
 //                .returnResult()
 //                .getResponseBodyContent();
 
-        System.out.println("- XxXxX - 日常价格浮动要考虑未来情况，不能按当前库存算");
+        throw new Exception("- XxXxX - 日常价格浮动要考虑未来情况，不能按当前库存算");
     }
 
     /**
