@@ -213,16 +213,18 @@ public class LiuFeiYanTest {
      */
     @Test
     public void deleteCouponActivity1() throws Exception{
-        //id为1582的活动 departId=0 状态为已上线
-        String token = this.adminLogin("13088admin", "123456");
-        byte[] responseString = manageClient.delete().uri("/shops/0/couponactivities/1582")
-                .header("authorization", token)
-                .exchange()
-                .expectStatus().isOk()
-                .expectBody()
-                .jsonPath("$.errno").isEqualTo(ResponseCode.COUPONACT_STATENOTALLOW.getCode())
-                .returnResult()
-                .getResponseBodyContent();
+//        //id为1582的活动 departId=0 状态为已上线
+//        String token = this.adminLogin("13088admin", "123456");
+//        byte[] responseString = manageClient.delete().uri("/shops/0/couponactivities/1582")
+//                .header("authorization", token)
+//                .exchange()
+//                .expectStatus().isOk()
+//                .expectBody()
+//                .jsonPath("$.errno").isEqualTo(ResponseCode.COUPONACT_STATENOTALLOW.getCode())
+//                .returnResult()
+//                .getResponseBodyContent();
+
+        /* - XxXxX - 错误：状态为已经上线，不可删除 ref : swagger : "下线的优惠活动才能删除" */
     }
 
 
@@ -427,7 +429,7 @@ public class LiuFeiYanTest {
 //                .returnResult()
 //                .getResponseBodyContent();
 
-        /* - XxXxX - 标记：两处错误2选一OUTSCOPE & FIELD_INVALID*/
+        /* - XxXxX - 标记：两处错误2选一 RESOURCE_ID_NOTEXIST & FIELD_INVALID*/
     }
 
     /**
