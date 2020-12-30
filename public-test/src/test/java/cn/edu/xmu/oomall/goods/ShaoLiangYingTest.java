@@ -672,9 +672,9 @@ public class ShaoLiangYingTest {
                 .returnResult()
                 .getResponseBodyContent();
 
-        //时段冲突
-        beginTime = LocalDateTime.parse("2020-12-28 17:42:20",df);
-        endTime = LocalDateTime.parse("2021-01-28 17:42:20",df);
+        //时段冲突 /* -XxXxX - 修改时间使其大于当前时间 */
+        beginTime = LocalDateTime.now().plusDays(10);
+        endTime = beginTime.plusDays(5);
         requestJson = "{\"activityPrice\":\"120\", \"beginTime\":\""+beginTime.toString()+"\",\"endTime\":\""+endTime.toString()+"\",\"quantity\": \"100\"}";
         res = manageClient.post().uri("/shops/1/skus/626/floatPrices").header("authorization",adminToken).bodyValue(requestJson);
         responseBuffer = res.exchange()

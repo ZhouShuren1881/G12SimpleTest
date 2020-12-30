@@ -116,17 +116,19 @@ public class YangMingTest {
      */
     @Test
     public void adminQueryPresales2() throws Exception {
-        String token = this.login("13088admin", "123456");
-        //String token = createTestToken(1L, 1L, 100);
-        byte[] responseString = manageClient.get().uri("/shops/1/presales?state=4").header("authorization",token)
-                .exchange()
-                .expectStatus().isOk()
-                .expectBody()
-                .jsonPath("$.errno").isEqualTo(ResponseCode.OK.getCode())
-                .jsonPath("$.data").isArray()
-                .jsonPath("$.data.length()").isEqualTo(0)
-                .returnResult()
-                .getResponseBodyContent();
+//        String token = this.login("13088admin", "123456");
+//        //String token = createTestToken(1L, 1L, 100);
+//        byte[] responseString = manageClient.get().uri("/shops/1/presales?state=4").header("authorization",token)
+//                .exchange()
+//                .expectStatus().isOk()
+//                .expectBody()
+//                .jsonPath("$.errno").isEqualTo(ResponseCode.OK.getCode())
+//                .jsonPath("$.data").isArray()
+//                .jsonPath("$.data.length()").isEqualTo(0)
+//                .returnResult()
+//                .getResponseBodyContent();
+
+        /* - XxXxX - state字段不合法 */
     }
 
 
@@ -193,7 +195,7 @@ public class YangMingTest {
 //        String expectedResponse="{\"errno\":503,\"errmsg\":\"字段不合法\"}";
 //        JSONAssert.assertEquals(expectedResponse, new String(ret, "UTF-8"), true);
 
-        /* - XxXxX - 字段不合法 Http Status = 0 */
+        /* - XxXxX - EndTime < now 应该返回 ResponseCode.Log_bigger */
     }
 
     /**
@@ -454,18 +456,20 @@ public class YangMingTest {
      */
     @Test
     public void putPresaleOnShelves1() throws Exception {
-        String token = this.login("13088admin", "123456");
-        //String token = createTestToken(1L, 1L, 100);
-        byte[] responseString = manageClient.put().uri("/shops/1/presales/3107/onshelves").header("authorization",token)
-                .exchange()
-                .expectStatus().isOk()
-                .expectBody()
-                .jsonPath("$.errno").isEqualTo(ResponseCode.PRESALE_STATENOTALLOW.getCode())
-                .returnResult()
-                .getResponseBodyContent();
+//        String token = this.login("13088admin", "123456");
+//        //String token = createTestToken(1L, 1L, 100);
+//        byte[] responseString = manageClient.put().uri("/shops/1/presales/3107/onshelves").header("authorization",token)
+//                .exchange()
+//                .expectStatus().isOk()
+//                .expectBody()
+//                .jsonPath("$.errno").isEqualTo(ResponseCode.PRESALE_STATENOTALLOW.getCode())
+//                .returnResult()
+//                .getResponseBodyContent();
 
 //        String expectedResponse="{\"errno\":906,\"errmsg\":\"预售活动状态禁止\"}";
 //        JSONAssert.assertEquals(expectedResponse, new String(responseString, "UTF-8"), true);
+
+        /* - XxXxX - 状态未改变，应改为 ResponseCode.STATE_NOCHANGE */
     }
 
     /**
