@@ -551,17 +551,17 @@ public class LiDiHanTest {
     @Test
     public void transSkuImage() throws Exception {
         String token = this.login("13088admin","123456");
-        File file = new File("time.png");
-        byte[] data = null;
-        // 读取图片字节数组
-        try {
-            InputStream in = new FileInputStream(file);
-            data = new byte[in.available()];
-            in.read(data);
-            in.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        File file = new File("time.png");
+        byte[] data = "New Fantasy Test".getBytes();
+//        // 读取图片字节数组
+//        try {
+//            InputStream in = new FileInputStream(file);
+//            data = new byte[in.available()];
+//            in.read(data);
+//            in.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
         builder.part("img", Base64.getDecoder().decode(Base64.getEncoder().encode(data)))
                 .header("Content-Disposition", "form-data; name=img; filename=image.jpg");
