@@ -98,7 +98,7 @@ public class ShaoLiangYingTest {
 //        userToken = userLogin("8606245097", "123456");
 
         //增加三天后的秒杀
-        LocalDateTime dateTime = LocalDateTime.now().plusDays(3);
+        LocalDateTime dateTime = LocalDateTime.now().plusDays(3000); /* - XxXxX - 改为3000不冲突 */
         String requestJson = "{\"flashDate\":\""+ dateTime.toString()+"\"}";
         byte[] responseBuffer = null;
         WebTestClient.RequestHeadersSpec res = manageClient.post().uri("/shops/0/timesegments/8/flashsales").header("authorization",adminToken).bodyValue(requestJson);
