@@ -116,19 +116,17 @@ public class YangMingTest {
      */
     @Test
     public void adminQueryPresales2() throws Exception {
-//        String token = this.login("13088admin", "123456");
-//        //String token = createTestToken(1L, 1L, 100);
-//        byte[] responseString = manageClient.get().uri("/shops/1/presales?state=4").header("authorization",token)
-//                .exchange()
-//                .expectStatus().isOk()
-//                .expectBody()
-//                .jsonPath("$.errno").isEqualTo(ResponseCode.OK.getCode())
-//                .jsonPath("$.data").isArray()
-//                .jsonPath("$.data.length()").isEqualTo(0)
-//                .returnResult()
-//                .getResponseBodyContent();
-
-        /* - XxXxX - state字段不合法 */
+        String token = this.login("13088admin", "123456");
+        //String token = createTestToken(1L, 1L, 100);
+        byte[] responseString = manageClient.get().uri("/shops/1/presales?state=4").header("authorization",token)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.errno").isEqualTo(ResponseCode.OK.getCode())
+                .jsonPath("$.data").isArray()
+                .jsonPath("$.data.length()").isEqualTo(0)
+                .returnResult()
+                .getResponseBodyContent();
     }
 
 
@@ -169,33 +167,31 @@ public class YangMingTest {
      */
     @Test
     public void createPresaleOfSKU2() throws Exception {
-//        //String token = createTestToken(1L, 1L, 100);
-//        String token = this.login("13088admin", "123456");
-//        String Json = "{\n" +
-//                "  \"name\": \"testforcreatePresaleOfSKU\",\n" +
-//                "  \"advancePayPrice\": 100,\n" +
-//                "  \"restPayPrice\": 1000,\n" +
-//                "  \"quantity\": 300,\n" +
-//                "  \"beginTime\": \"2016-01-09T15:55:18\",\n" +
-//                "  \"payTime\": \"2017-01-11T15:55:18\",\n" +
-//                "  \"endTime\": \"2018-01-20T15:55:18\"\n" +
-//                "}";
-//
-//        byte[] ret = manageClient.post()
-//                .uri("/shops/1/skus/3311/presales")
-//                .header("authorization",token)
-//                .bodyValue(Json)
-//                .exchange()
-//                .expectStatus().isBadRequest()
-//                .expectBody()
-//                .jsonPath("$.errno").isEqualTo(ResponseCode.FIELD_NOTVALID.getCode())
-//                .returnResult()
-//                .getResponseBodyContent();
+        //String token = createTestToken(1L, 1L, 100);
+        String token = this.login("13088admin", "123456");
+        String Json = "{\n" +
+                "  \"name\": \"testforcreatePresaleOfSKU\",\n" +
+                "  \"advancePayPrice\": 100,\n" +
+                "  \"restPayPrice\": 1000,\n" +
+                "  \"quantity\": 300,\n" +
+                "  \"beginTime\": \"2016-01-09T15:55:18\",\n" +
+                "  \"payTime\": \"2017-01-11T15:55:18\",\n" +
+                "  \"endTime\": \"2018-01-20T15:55:18\"\n" +
+                "}";
+
+        byte[] ret = manageClient.post()
+                .uri("/shops/1/skus/3311/presales")
+                .header("authorization",token)
+                .bodyValue(Json)
+                .exchange()
+                .expectStatus().isBadRequest()
+                .expectBody()
+                .jsonPath("$.errno").isEqualTo(ResponseCode.FIELD_NOTVALID.getCode())
+                .returnResult()
+                .getResponseBodyContent();
 
 //        String expectedResponse="{\"errno\":503,\"errmsg\":\"字段不合法\"}";
 //        JSONAssert.assertEquals(expectedResponse, new String(ret, "UTF-8"), true);
-
-        /* - XxXxX - EndTime < now 应该返回 ResponseCode.Log_bigger */
     }
 
     /**
@@ -456,20 +452,18 @@ public class YangMingTest {
      */
     @Test
     public void putPresaleOnShelves1() throws Exception {
-//        String token = this.login("13088admin", "123456");
-//        //String token = createTestToken(1L, 1L, 100);
-//        byte[] responseString = manageClient.put().uri("/shops/1/presales/3107/onshelves").header("authorization",token)
-//                .exchange()
-//                .expectStatus().isOk()
-//                .expectBody()
-//                .jsonPath("$.errno").isEqualTo(ResponseCode.PRESALE_STATENOTALLOW.getCode())
-//                .returnResult()
-//                .getResponseBodyContent();
+        String token = this.login("13088admin", "123456");
+        //String token = createTestToken(1L, 1L, 100);
+        byte[] responseString = manageClient.put().uri("/shops/1/presales/3107/onshelves").header("authorization",token)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.errno").isEqualTo(ResponseCode.PRESALE_STATENOTALLOW.getCode())
+                .returnResult()
+                .getResponseBodyContent();
 
 //        String expectedResponse="{\"errno\":906,\"errmsg\":\"预售活动状态禁止\"}";
 //        JSONAssert.assertEquals(expectedResponse, new String(responseString, "UTF-8"), true);
-
-        /* - XxXxX - 状态未改变，应改为 ResponseCode.STATE_NOCHANGE */
     }
 
     /**

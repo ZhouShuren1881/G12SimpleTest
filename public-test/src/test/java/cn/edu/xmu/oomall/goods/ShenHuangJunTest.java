@@ -115,19 +115,18 @@ public class ShenHuangJunTest {
      */
     @Test
     public void allowComment2() throws Exception{
-//        String token = this.login("13088admin", "123456");
-//        String requestJson="{\"conclusion\":false}";
-//        WebTestClient.RequestHeadersSpec res = manageClient.put().uri("/shops/0/comments/7/confirm")
-//                .header("authorization", token)
-//                .bodyValue(requestJson);
-//
-//        byte[] responseBuffer = res.exchange().expectHeader().contentType("application/json;charset=UTF-8")
-//                .expectBody()
-//                .jsonPath("$.errno").isEqualTo(ResponseCode.OK.getCode())
-//                .returnResult()
-//                .getResponseBodyContent();
+        String token = this.login("13088admin", "123456");
+        String requestJson="{\"conclusion\":false}";
+        WebTestClient.RequestHeadersSpec res = manageClient.put().uri("/shops/0/comments/7/confirm")
+                .header("authorization", token)
+                .bodyValue(requestJson);
 
-        /* - XxXxX - Comment 所指向的sku不存在 */
+        byte[] responseBuffer = res.exchange().expectHeader().contentType("application/json;charset=UTF-8")
+                .expectBody()
+                .jsonPath("$.errno").isEqualTo(ResponseCode.OK.getCode())
+                .returnResult()
+                .getResponseBodyContent();
+
     }
 
     /**

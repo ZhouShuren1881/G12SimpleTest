@@ -126,20 +126,18 @@ public class SongRunhanTest {
     @Test
     @Order(1)
     public void getFlashSaleActivity1()throws Exception {
-//        String token = this.login("13088admin", "123456");
-//        byte[] responseBuffer = null;
-//        WebTestClient.RequestHeadersSpec res = mallClient.get().uri("/flashsales/current?page=1&pageSize=10");
-//        responseBuffer = res.exchange().expectHeader().contentType("application/json;charset=UTF-8").expectStatus().isOk()
-//                .expectBody()
-//                .jsonPath("$").isArray()
-//                .jsonPath("$[?(@.id == 8)].goodsSku.id").isEqualTo(275)
-//                .jsonPath("$[?(@.id == 7)].goodsSku.id").isEqualTo(290)
-//                .returnResult()
-//                .getResponseBodyContent();
-//
-//        String response = new String(responseBuffer, "utf-8");
+        String token = this.login("13088admin", "123456");
+        byte[] responseBuffer = null;
+        WebTestClient.RequestHeadersSpec res = mallClient.get().uri("/flashsales/current?page=1&pageSize=10");
+        responseBuffer = res.exchange().expectHeader().contentType("application/json;charset=UTF-8").expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$").isArray()
+                .jsonPath("$[?(@.id == 8)].goodsSku.id").isEqualTo(275)
+                .jsonPath("$[?(@.id == 7)].goodsSku.id").isEqualTo(290)
+                .returnResult()
+                .getResponseBodyContent();
 
-        /* - XxXxX - 设置的时间段错误（早了一小时） */
+        String response = new String(responseBuffer, "utf-8");
     }
 
     /**

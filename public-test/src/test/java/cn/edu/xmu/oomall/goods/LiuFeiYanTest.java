@@ -213,18 +213,16 @@ public class LiuFeiYanTest {
      */
     @Test
     public void deleteCouponActivity1() throws Exception{
-//        //id为1582的活动 departId=0 状态为已上线
-//        String token = this.adminLogin("13088admin", "123456");
-//        byte[] responseString = manageClient.delete().uri("/shops/0/couponactivities/1582")
-//                .header("authorization", token)
-//                .exchange()
-//                .expectStatus().isOk()
-//                .expectBody()
-//                .jsonPath("$.errno").isEqualTo(ResponseCode.COUPONACT_STATENOTALLOW.getCode())
-//                .returnResult()
-//                .getResponseBodyContent();
-
-        /* - XxXxX - 状态为已经上线，不可删除 */
+        //id为1582的活动 departId=0 状态为已上线
+        String token = this.adminLogin("13088admin", "123456");
+        byte[] responseString = manageClient.delete().uri("/shops/0/couponactivities/1582")
+                .header("authorization", token)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.errno").isEqualTo(ResponseCode.COUPONACT_STATENOTALLOW.getCode())
+                .returnResult()
+                .getResponseBodyContent();
     }
 
 
@@ -419,17 +417,15 @@ public class LiuFeiYanTest {
      */
     @Test
     public void  deleteCouponSku1() throws Exception{
-//        String token = this.adminLogin("13088admin", "123456");
-//        byte[] responseString = manageClient.delete().uri("/shops/0/couponskus/111111")
-//                .header("authorization", token)
-//                .exchange()
-//                .expectStatus().isNotFound()
-//                .expectBody()
-//                .jsonPath("$.errno").isEqualTo(ResponseCode.RESOURCE_ID_NOTEXIST.getCode())
-//                .returnResult()
-//                .getResponseBodyContent();
-
-        /* - XxXxX - 两处错误 RESOURCE_ID_NOTEXIST & FIELD_INVALID */
+        String token = this.adminLogin("13088admin", "123456");
+        byte[] responseString = manageClient.delete().uri("/shops/0/couponskus/111111")
+                .header("authorization", token)
+                .exchange()
+                .expectStatus().isNotFound()
+                .expectBody()
+                .jsonPath("$.errno").isEqualTo(ResponseCode.RESOURCE_ID_NOTEXIST.getCode())
+                .returnResult()
+                .getResponseBodyContent();
     }
 
     /**

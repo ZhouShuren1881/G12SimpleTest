@@ -273,17 +273,15 @@ public class XiangSuXianTest {
     @Test
     @Order(12)
     public void deleteGroupon1() throws Exception {
-//        String token = this.login("13088admin", "123456");
-//        manageClient.delete().uri("/shops/2/groupons/1")
-//                .header("authorization", token)
-//                .exchange()
-//                .expectStatus().isForbidden()
-//                .expectBody()
-//                .jsonPath("$.errno").isEqualTo(504)
-//                .returnResult()
-//                .getResponseBodyContent();
-
-        /* - XxXxX - 不是本店商品，没有操作权限505 */
+        String token = this.login("13088admin", "123456");
+        manageClient.delete().uri("/shops/2/groupons/1")
+                .header("authorization", token)
+                .exchange()
+                .expectStatus().isForbidden()
+                .expectBody()
+                .jsonPath("$.errno").isEqualTo(504)
+                .returnResult()
+                .getResponseBodyContent();
     }
     //删除团购（团购状态禁止）
     @Test
@@ -293,13 +291,11 @@ public class XiangSuXianTest {
         manageClient.delete().uri("/goods/shops/1/groupons/1")
                 .header("authorization", token)
                 .exchange()
-/*                .expectStatus().isNotFound()
+                .expectStatus().isNotFound()
                 .expectBody()
                 .jsonPath("$.errno").isEqualTo(907)
                 .returnResult()
-                .getResponseBodyContent()*/;
-
-                /* - XxXxX - 该团购状态为下线态 */
+                .getResponseBodyContent();
     }
 
     //删除团购（删除成功）

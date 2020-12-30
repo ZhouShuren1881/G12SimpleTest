@@ -513,23 +513,21 @@ public class XuQingYunTest {
     @Order(28)
     void add_floating_price2() throws Exception
     {
-//        LocalDateTime beginTime= LocalDateTime.of(2020,12,29,20,0,0);
-//        LocalDateTime endTime=LocalDateTime.of(2020,12,30,10,0,0);
-//        String requireJson="{\n    \"activityPrice\": 100,\n    \"beginTime\": \""+beginTime.toString()+"\",\n    \"endTime\": \""+endTime.toString()+"\",\n    \"quantity\": 99999\n}";
-//        String token = this.adminLogin("13088admin", "123456");
-//
-//        byte[] response =manageClient.post().uri("/shops/1/skus/273/floatPrices")
-//                .header("authorization",token)
-//                .bodyValue(requireJson)
-//                .exchange()
-//                .expectStatus().isOk()
-//                .expectBody()
-//                .jsonPath("$.errno").isEqualTo(900)
-//                .returnResult()
-//                .getResponseBodyContent();
-//        String expectedResponse="{\"errno\":900,\"errmsg\":\"库存不足：273\"}";
+        LocalDateTime beginTime= LocalDateTime.of(2020,12,29,20,0,0);
+        LocalDateTime endTime=LocalDateTime.of(2020,12,30,10,0,0);
+        String requireJson="{\n    \"activityPrice\": 100,\n    \"beginTime\": \""+beginTime.toString()+"\",\n    \"endTime\": \""+endTime.toString()+"\",\n    \"quantity\": 99999\n}";
+        String token = this.adminLogin("13088admin", "123456");
 
-        /* - XxXxX - 时间段已经过了，不能再继续 */
+        byte[] response =manageClient.post().uri("/shops/1/skus/273/floatPrices")
+                .header("authorization",token)
+                .bodyValue(requireJson)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.errno").isEqualTo(900)
+                .returnResult()
+                .getResponseBodyContent();
+        String expectedResponse="{\"errno\":900,\"errmsg\":\"库存不足：273\"}";
     }
 
     @Test
@@ -649,17 +647,15 @@ public class XuQingYunTest {
     @Test
     @Order(35)
     void deleteSku3() throws Exception{
-//        String token = this.adminLogin("13088admin", "123456");
-//
-//        byte[] response =manageClient.delete().uri("/shops/1/skus/20682").header("authorization",token)
-//                .exchange()
-//                .expectStatus().is4xxClientError().expectBody()
-//                .jsonPath("$.errno").isEqualTo(504)
-//                .returnResult()
-//                .getResponseBodyContent();
-//        String expectedResponse="{\"errno\":504,\"errmsg\":\"操作的资源id不存在\"}";
+        String token = this.adminLogin("13088admin", "123456");
 
-        /* - XxXxX - 状态码应该是200， 否则和自己的putOffGoodsOnSale2 putGoodsOnSale2 冲突 */
+        byte[] response =manageClient.delete().uri("/shops/1/skus/20682").header("authorization",token)
+                .exchange()
+                .expectStatus().is4xxClientError().expectBody()
+                .jsonPath("$.errno").isEqualTo(504)
+                .returnResult()
+                .getResponseBodyContent();
+        String expectedResponse="{\"errno\":504,\"errmsg\":\"操作的资源id不存在\"}";
     }
 
     @Test
