@@ -241,21 +241,19 @@ public class XiangSuXianTest {
     @Test
     @Order(10)
     public void deletePresales2() throws Exception {
-//        String token = this.login("13088admin", "123456");
-//        byte[] responseString = manageClient.delete().uri("/shops/2/presales/4")
-//                .header("authorization", token)
-//                .exchange()
-//                .expectStatus().isOk()
-//                .expectBody()
-//                .returnResult()
-//                .getResponseBodyContent();
-//        String expectedResponse = "{\n" +
-//                "  \"errno\": 906\n" +
-//                //               "  \"errmsg\": \"预售活动状态禁止\"\n" +
-//                "}";
-//        JSONAssert.assertEquals(expectedResponse, new String(responseString, StandardCharsets.UTF_8), false);
-
-        /* - XxXxX - 迷惑行为：errno=906 还 expectStatus().isOk() */
+        String token = this.login("13088admin", "123456");
+        byte[] responseString = manageClient.delete().uri("/shops/2/presales/4")
+                .header("authorization", token)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .returnResult()
+                .getResponseBodyContent();
+        String expectedResponse = "{\n" +
+                "  \"errno\": 906\n" +
+                //               "  \"errmsg\": \"预售活动状态禁止\"\n" +
+                "}";
+        JSONAssert.assertEquals(expectedResponse, new String(responseString, StandardCharsets.UTF_8), false);
     }
     //删除预售（删除成功）
     @Test
@@ -285,7 +283,7 @@ public class XiangSuXianTest {
 //                .returnResult()
 //                .getResponseBodyContent();
 
-        /* - XxXxX - 状态码不对，应该是没有操作权限505 */
+        /* - XxXxX - 不是本店商品，没有操作权限505 */
     }
     //删除团购（团购状态禁止）
     @Test

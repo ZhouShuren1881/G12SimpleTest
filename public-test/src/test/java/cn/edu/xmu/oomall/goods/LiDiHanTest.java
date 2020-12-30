@@ -410,21 +410,19 @@ public class LiDiHanTest {
     @Order(29)
     // 数据库状态错误
     public void auditShop3() throws Exception {
-//        String token = this.login("13088admin","123456");
-//        String json = "{\"conclusion\":\"true\"}";
-//        byte[] ret = manageClient.put()
-//                .uri("/shops/0/newshops/5/audit")
-//                .header("authorization",token)
-//                .bodyValue(json)
-//                .exchange()
-//                .expectStatus().isOk()
-//                .expectBody()
-//                .jsonPath("$.errno").isEqualTo("980")
-//                .returnResult()
-//                .getResponseBodyContent();
-//        String responseString = new String(ret, "UTF-8");
-
-        /* - XxXxX - 迷惑行为：jsonPath("$.errno").isEqualTo("980") 还 expectStatus().isOk() */
+        String token = this.login("13088admin","123456");
+        String json = "{\"conclusion\":\"true\"}";
+        byte[] ret = manageClient.put()
+                .uri("/shops/0/newshops/5/audit")
+                .header("authorization",token)
+                .bodyValue(json)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.errno").isEqualTo("980")
+                .returnResult()
+                .getResponseBodyContent();
+        String responseString = new String(ret, "UTF-8");
     }
 
     @Test
@@ -484,19 +482,17 @@ public class LiDiHanTest {
     @Test
     @Order(33)
     public void onlineShop3() throws Exception {
-//        String token = this.login("13088admin","123456");
-//        byte[] ret = manageClient.put()
-//                .uri("/shops/5/onshelves")
-//                .header("authorization",token)
-//                .exchange()
-//                .expectStatus().isOk()
-//                .expectBody()
-//                .jsonPath("$.errno").isEqualTo("980")
-//                .returnResult()
-//                .getResponseBodyContent();
-//        String responseString = new String(ret, "UTF-8");
-
-        /* - XxXxX - 关联删除 Method auditShop3 */
+        String token = this.login("13088admin","123456");
+        byte[] ret = manageClient.put()
+                .uri("/shops/5/onshelves")
+                .header("authorization",token)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.errno").isEqualTo("980")
+                .returnResult()
+                .getResponseBodyContent();
+        String responseString = new String(ret, "UTF-8");
     }
 
 
@@ -539,19 +535,17 @@ public class LiDiHanTest {
     @Test
     @Order(36)
     public void offlineShop3() throws Exception {
-//        String token = this.login("13088admin","123456");
-//        byte[] ret = manageClient.put()
-//                .uri("/shops/5/offshelves")
-//                .header("authorization",token)
-//                .exchange()
-//                .expectStatus().isOk()
-//                .expectBody()
-//                .jsonPath("$.errno").isEqualTo("980")
-//                .returnResult()
-//                .getResponseBodyContent();
-//        String responseString = new String(ret, "UTF-8");
-
-        /* - XxXxX - 关联删除 Method auditShop3 */
+        String token = this.login("13088admin","123456");
+        byte[] ret = manageClient.put()
+                .uri("/shops/5/offshelves")
+                .header("authorization",token)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.errno").isEqualTo("980")
+                .returnResult()
+                .getResponseBodyContent();
+        String responseString = new String(ret, "UTF-8");
     }
 
     @Test
