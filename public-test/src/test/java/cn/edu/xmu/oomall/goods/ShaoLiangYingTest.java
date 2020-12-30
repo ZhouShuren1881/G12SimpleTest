@@ -661,18 +661,18 @@ public class ShaoLiangYingTest {
                 .returnResult()
                 .getResponseBodyContent();
 
-        //shopId和skuId匹配 /* -XxXxX - 修改，开始时间已经过期 */
-        //sku-spu-shop:626-626-0 9001-8991-22
-        beginTime = LocalDateTime.now().plusDays(2);
-        endTime = LocalDateTime.now().plusDays(20);
-        requestJson = "{\"activityPrice\":\"120\", \"beginTime\":\""+beginTime.toString()+"\",\"endTime\":\""+endTime.toString()+"\",\"quantity\": \"10\"}";
-        res = manageClient.post().uri("/shops/0/skus/8991/floatPrices").header("authorization",adminToken).bodyValue(requestJson);
-        responseBuffer = res.exchange()
-                .expectBody()
-                .jsonPath("$.errno").isEqualTo(ResponseCode.RESOURCE_ID_OUTSCOPE.getCode())
-                .jsonPath("$.data").doesNotExist()
-                .returnResult()
-                .getResponseBodyContent();
+        //shopId和skuId匹配 /* -XxXxX - skuId 存在 */
+//        //sku-spu-shop:626-626-0 9001-8991-22
+//        beginTime = LocalDateTime.now().plusDays(2);
+//        endTime = LocalDateTime.now().plusDays(20);
+//        requestJson = "{\"activityPrice\":\"120\", \"beginTime\":\""+beginTime.toString()+"\",\"endTime\":\""+endTime.toString()+"\",\"quantity\": \"10\"}";
+//        res = manageClient.post().uri("/shops/0/skus/8991/floatPrices").header("authorization",adminToken).bodyValue(requestJson);
+//        responseBuffer = res.exchange()
+//                .expectBody()
+//                .jsonPath("$.errno").isEqualTo(ResponseCode.RESOURCE_ID_OUTSCOPE.getCode())
+//                .jsonPath("$.data").doesNotExist()
+//                .returnResult()
+//                .getResponseBodyContent();
 
         //时段冲突 /* -XxXxX - 忽略，开始时间已经过期*/
 //        beginTime = LocalDateTime.parse("2020-12-28 17:42:20",df);
